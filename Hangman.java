@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Hangman{
+    private static String[] sketch = initHangmanSketchArray(); 
     public static void main(String[] args) {
         System.out.print("Insert word to guess (only english words): ");
         Scanner scan = new Scanner(System.in); 
@@ -11,10 +12,15 @@ public class Hangman{
 
         // buffers
         ArrayList<String> guessedLetters = new ArrayList<String>();
-        int life = 10;       
+        int life = 8;       
 
         // Lets try to guess the word
         while(true){
+            if(life != 8){
+                System.out.println();
+                sketchHangman(8-life-1);
+            }
+
             if(life == 0){
                 System.out.println("---------- You lost! You ran out of lives! ----------");
                 break;
@@ -56,5 +62,106 @@ public class Hangman{
             System.out.println("________________________________________________________________________________");
         }
         scan.close();        
+    }
+
+    public static void sketchHangman(int index){
+        String hangmanPart = sketch[index];
+        System.out.println(hangmanPart);
+
+    }
+    
+    //  _______
+    //  |/      |
+    //  |      (_)
+    //  |      \|/
+    //  |       |
+    //  |      / \
+    //  |
+    // _|___
+    public static String[] initHangmanSketchArray(){
+        //assumes number of life is 8
+        String[] sketch = new String[8];
+        sketch[0] = "_|___";
+    // _|___
+      
+        sketch[1] = 
+        " |\n |\n |\n |\n |\n |\n_|___"; 
+    //  |     
+    //  |      
+    //  |      
+    //  |      
+    //  |      
+    //  |
+    // _|___
+
+       sketch[2] =
+       " _______ \n |/\n |\n |\n |\n |\n |\n |\n_|___";
+   //  _______
+    //  |/      
+    //  |      
+    //  |      
+    //  |      
+    //  |      
+    //  |
+    // _|___ 
+
+       sketch[3] =
+       " _______ \n |/    |\n |\n |\n |\n |\n |\n |\n_|___";
+    //  _______
+    //  |/      |
+    //  |     
+    //  |     
+    //  |     
+    //  |      
+    //  |
+    // _|___
+       
+        sketch[4] = 
+       " _______ \n |/    |\n |    (_)\n |\n |\n |\n |\n |\n_|___";
+    //  _______
+    //  |/      |
+    //  |      (_)
+    //  |      
+    //  |      
+    //  |      
+    //  |
+    // _|___
+       
+       sketch[5] = 
+       " _______ \n |/    |\n |    (_)\n |     |\n |     |\n |\n |\n |\n_|___";
+
+    //     _________
+    //     |/      |
+    //     |      (_)
+    //     |       |
+    //     |       |
+    //     |       
+    //     |
+    //    _|___";
+       
+       sketch[6] = 
+       " _______ \n |/    |\n |    (_)\n |     |\n |     |\n |    / \\ \n |\n |\n_|___";
+
+    //     _________
+    //     |/      |
+    //     |      (_)
+    //     |       |
+    //     |       |
+    //     |      / \
+    //     |
+    //    _|___";
+        
+       sketch[7] = 
+       " _______ \n |/    |\n |    (_)\n |    \\|/\n |     |\n |    / \\ \n |\n |\n_|___";
+
+    //     _________
+    //     |/      |
+    //     |      (_)
+    //     |      \|/
+    //     |       |
+    //     |      / \
+    //     |
+    //    _|___";
+        return sketch;
     }
 }
