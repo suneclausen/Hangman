@@ -23,6 +23,7 @@ public class Hangman{
 
             if(life == 0){
                 System.out.println("---------- You lost! You ran out of lives! ----------");
+                System.out.println("The correct word was: " + initWord);
                 break;
             }
             // print line with correct words embedded at right index
